@@ -18,18 +18,28 @@ public class pemrosesData() {
     }
 }
 
-public class SimpleDataBase() { 
-    private List<int> storedData = new List<int>();
-    private List<DateTime> inputDates = new List<DateTime>();
+public class SimpleDataBase<T> {
+    private List<T> storedData;
+    private List<DateTime> inputDates;
 
-    public void simpleDatabase() { 
-        
+    public SimpleDataBase()
+    {
+        storedData = new List<T>();
+        inputDates = new List<DateTime>();
+
     }
 
-    public void addNewData() { 
-    
+    public void addNewData(T data) {
+        storedData.Add(data);
+        inputDates.Add(DateTime.Now);
     }
-
+    public void printAllData() {
+        for (int i = 0; i < storedData.Count; i++)
+        {
+            Console.WriteLine("\ndata inputan: " + storedData[i]);
+            Console.WriteLine("tanggal : " + inputDates[i]);
+        }
+    }
 }
 
 
@@ -44,7 +54,12 @@ public class program() {
         in2 = Console.ReadLine();
         Console.WriteLine("masukkan nilai ketiga: ");
         in3 = Console.ReadLine();
+        Console.WriteLine("nilai terbesar: " + proses.DapatkanNilaiTerbesar(in1, in2, in3));
 
-       Console.WriteLine("nilai terbesar: " + proses.DapatkanNilaiTerbesar(in1,in2,in3));
+        SimpleDataBase<int> dataBase = new SimpleDataBase<int>();
+        dataBase.addNewData(12);
+        dataBase.addNewData(34);
+        dataBase.addNewData(56);
+        dataBase.printAllData();
     }
 }
