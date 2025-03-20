@@ -32,7 +32,6 @@ public class SimpleDataBase() {
 
 }
 
-
 public class program() {
     public static void Main() {
         String in1, in2, in3;
